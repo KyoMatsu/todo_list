@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="util.CommonUtil" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8" import="util.CommonUtil"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="header.jsp"></jsp:include>
 
@@ -21,17 +21,21 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="task" items="${ tasks }">
-				<tr>
-					<th scope="row">
-						<input class="form-check-input" type="checkbox">
-					</th>
-					<td><c:out value="${ CommonUtil.formatLimitDate(task.getLimit_date()) }" /></td>
-					<td><c:out value="${ CommonUtil.formatPriority(task.getPriority()) }" /></td>
-					<td><c:out value="${ task.getTitle() }" /></td>
-					<td><c:out value="${ task.getDescription() }" /></td>
-				</tr>
-			</c:forEach>
+			<form id="status_form" method="post" action="TaskList">
+				<input type="hidden" name="comp_id" value="">
+				<c:forEach var="task" items="${ tasks }">
+					<tr>
+						<th scope="row"><input class="form-check-input"
+							type="checkbox" data-id="${ task.getId() }"></th>
+						<td><c:out
+								value="${ CommonUtil.formatLimitDate(task.getLimit_date()) }" /></td>
+						<td><c:out
+								value="${ CommonUtil.formatPriority(task.getPriority()) }" /></td>
+						<td><c:out value="${ task.getTitle() }" /></td>
+						<td><c:out value="${ task.getDescription() }" /></td>
+					</tr>
+				</c:forEach>
+			</form>
 		</tbody>
 	</table>
 </div>
