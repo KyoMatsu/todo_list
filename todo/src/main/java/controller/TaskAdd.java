@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Task;
+import forms.TaskAddForm;
 import services.TaskService;
 
 /**
@@ -40,13 +41,20 @@ public class TaskAdd extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// タスク新規登録
 		request.setCharacterEncoding("utf8");
+		// バリデーションチェック
+		TaskAddForm tad = new TaskAddForm();
 		
-		TaskService ts = new TaskService();
-		ts.insert(new Task(request));
-
-		response.sendRedirect("/todo/TaskList");
+		if(tad.validate(request)) {
+			// タスク新規登録
+			TaskService ts = new TaskService();
+			ts.insert(new Task(request));
+			response.sendRedirect("/todo/TaskList");			
+		} else {
+			// 登録画面
+			request.setAttribute("errors", tad.getErrors());
+			doGet(request, response);
+		}
 	}
 
 }

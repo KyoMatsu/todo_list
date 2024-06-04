@@ -1,7 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="header.jsp"></jsp:include>
+
+<c:if test="${ not empty errors }">
+	<div class="alert alert-danger" role="alert">
+		<c:forEach var="error" items="${ errors }">
+			・<c:out value="${ error }" />
+		</c:forEach>
+	</div>
+</c:if>
 
 <div class="container p-5 text-center d-flex justify-content-center">
 	<form class="w-75 text-end" method="post" action="TaskAdd">
