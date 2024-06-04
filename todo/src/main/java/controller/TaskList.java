@@ -58,7 +58,9 @@ public class TaskList extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println(request.getParameter("comp_id"));
+		// 未完了 → 完了
+		TaskService ts = new TaskService();
+		ts.completeTask(request.getParameter("comp_id"));
 		doGet(request, response);
 	}
 

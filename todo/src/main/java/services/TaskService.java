@@ -113,4 +113,23 @@ public class TaskService {
 		}
 		return count;
 	}
+	
+	public int completeTask(String id) {
+		String sql = "update tasks set completed = 1 where id = ?";
+
+		int count = 0;
+		try (
+				Connection con = DbUtil.open();
+				PreparedStatement stmt = con.prepareStatement(sql);) {
+			// ?に値をバインド
+			stmt.setInt(1, CommonUtil.convStrToInt(id));
+
+			// sqlの実行
+			count = stmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
 }

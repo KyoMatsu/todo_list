@@ -26,7 +26,7 @@
 				<c:forEach var="task" items="${ tasks }">
 					<tr>
 						<th scope="row"><input class="form-check-input"
-							type="checkbox" data-id="${ task.getId() }"></th>
+							type="checkbox" data-id="${ task.getId() }" <c:if test="${ task.isCompleted() }">checked disabled</c:if>></th>
 						<td><c:out
 								value="${ CommonUtil.formatLimitDate(task.getLimit_date()) }" /></td>
 						<td><c:out
