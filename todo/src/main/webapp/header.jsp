@@ -7,19 +7,19 @@
 
 <head>
     <meta charset="utf-8">
-    <title>MyTodo | List</title>
+    <title>MyTodo | <c:out value="${ page }" /></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 	<nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">MyToDo</a>
+            <a class="navbar-brand" href="TaskList">MyToDo</a>
         </div>
     </nav>
     <nav class="nav">
-        <a class="nav-link border-bottom border-4 border-dark" aria-current="page" href="#">Active</a>
-        <a class="nav-link" href="#">Link</a>
-        <a class="nav-link" href="#">Link</a>
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link<c:if test="${ status == '' }"> active</c:if>" href="TaskList">すべて</a>
+        <a class="nav-link<c:if test="${ status == 'delay' }"> active</c:if>" href="TaskList?status=delay">遅延中</a>
+        <a class="nav-link<c:if test="${ status == 'done' }"> active</c:if>" href="TaskList?status=done">完了済み</a>
     </nav>

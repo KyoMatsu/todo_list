@@ -1,0 +1,9 @@
+.active {
+	font-weight: bold;
+    color: #191970;
+    border-bottom: 4px solid #191970;
+}
+
+.active:hover {
+    color: #191970;
+}
