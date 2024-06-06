@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.User;
+import services.LoginService;
+
 /**
  * Servlet implementation class Login
  */
@@ -36,8 +39,17 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Login doPost");
-		doGet(request, response);
+		// ログイン処理
+		String name = request.getParameter("email");
+		String pass = request.getParameter("pass");
+		
+		LoginService ls = new LoginService();
+		User login_user = ls.login(name, pass);
+		
+		if (login_user != null) {
+			response.sendRedirect("/todo/TaskList");
+		} else {
+			doGet(request, response);
+		}
 	}
-
 }
