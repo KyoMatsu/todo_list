@@ -43,16 +43,16 @@ public class TaskAdd extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf8");
 		// バリデーションチェック
-		TaskAddForm tad = new TaskAddForm();
+		TaskAddForm taf = new TaskAddForm();
 		
-		if(tad.validate(request)) {
+		if(taf.validate(request)) {
 			// タスク新規登録
 			TaskService ts = new TaskService();
 			ts.insert(new Task(request));
 			response.sendRedirect("/todo/TaskList");			
 		} else {
 			// 登録画面
-			request.setAttribute("errors", tad.getErrors());
+			request.setAttribute("errors", taf.getErrors());
 			doGet(request, response);
 		}
 	}

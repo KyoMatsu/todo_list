@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.User;
 import services.LoginService;
+import util.SessionUtil;
 
 /**
  * Servlet implementation class Login
@@ -30,7 +32,13 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// ログアウト処理
+		Map<String, String[]> param = request.getParameterMap();
+		
+		if(param.containsKey("logout")) {
+			SessionUtil.clearSession(request);
+		}
+		
 		request.getRequestDispatcher("/login.jsp").forward(request, response);
 	}
 
@@ -47,6 +55,8 @@ public class Login extends HttpServlet {
 		User login_user = ls.login(name, pass);
 		
 		if (login_user != null) {
+			// セッションにユーザー情報を保管
+			SessionUtil.setSession(request, "user", login_user);
 			response.sendRedirect("/todo/TaskList");
 		} else {
 			doGet(request, response);

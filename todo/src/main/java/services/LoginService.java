@@ -22,7 +22,6 @@ public class LoginService {
 			ResultSet rs = stmt.executeQuery();
 			if (rs.next()) {
 				// パスワードが一致する場合のみインスタンス化
-				System.out.println(rs.getString("password") + password);
 				if (rs.getString("password").equals(password))
 					user = new User(
 							rs.getInt("id"),
