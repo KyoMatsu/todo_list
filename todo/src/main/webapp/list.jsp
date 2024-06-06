@@ -10,7 +10,7 @@
 			<a href="TaskAdd" class="btn btn-success">+ 追加</a>
 		</div>
 	</div>
-	<table class="table">
+	<table class="table" id="tablesorter">
 		<thead>
 			<tr>
 				<th scope="col"></th>

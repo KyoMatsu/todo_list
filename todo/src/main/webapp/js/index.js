@@ -1,3 +1,9 @@
+// tablesorter
+$(document).ready(function() { 
+	$("#tablesorter").tablesorter();
+});
+
+
 // checkboxの取得
 let checks = document.querySelectorAll('.form-check-input');
 // submitするformの取得

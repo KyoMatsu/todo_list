@@ -8,10 +8,12 @@
 <meta charset="utf-8">
 <title>MyTodo | <c:out value="${ page }" /></title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/animate.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+	<!-- ヘッダー -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid d-flex justify-content-between">
 			<div>
@@ -36,8 +38,12 @@
 		</div>
 	</nav>
 
+	<!-- ステータス切替 -->
 	<nav class="nav">
 		<a class="nav-link<c:if test="${ status == '' }"> active</c:if>" href="TaskList">すべて</a>
 		<a class="nav-link<c:if test="${ status == 'delay' }"> active</c:if>" href="TaskList?status=delay">遅延中</a>
 		<a class="nav-link<c:if test="${ status == 'done' }"> active</c:if>" href="TaskList?status=done">完了済み</a>
 	</nav>
+	
+	<!--  -->
+	<jsp:include page="message.jsp"></jsp:include>
