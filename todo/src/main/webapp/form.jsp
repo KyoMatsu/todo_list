@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="header.jsp"></jsp:include>
@@ -17,29 +16,38 @@
 		<table class="table table-borderless text-end">
 			<tr>
 				<td class="align-middle">タイトル</td>
-				<td><input name="title" class="form-control" type="text"></td>
+				<td>
+					<input name="title" class="form-control" type="text">
+				</td>
 			</tr>
 			<tr>
 				<td class="align-middle">優先度</td>
-				<td><select name="priority" class="form-control">
+				<td>
+					<select name="priority" class="form-control">
 						<option value="3">高</option>
 						<option value="2">中</option>
 						<option value="1">低</option>
-				</select></td>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td class="align-middle">期限</td>
-				<td><input name="limit_date" class="form-control" type="date"></td>
+				<td>
+					<input name="limit_date" class="form-control" type="date">
+				</td>
 			</tr>
 			<tr>
 				<td class="align-middle">内容</td>
-				<td><textarea name="description" class="form-control"></textarea></td>
+				<td>
+					<textarea name="description" class="form-control"></textarea>
+				</td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><a class="me-3" href="TaskList">キャンセル</a>
-					<button class="btn btn-success text-end" type="submit">+
-						追加</button></td>
+				<td>
+					<a class="me-3" href="TaskList">キャンセル</a>
+					<button class="btn btn-success text-end" type="submit">+ 追加</button>
+				</td>
 			</tr>
 		</table>
 	</form>
